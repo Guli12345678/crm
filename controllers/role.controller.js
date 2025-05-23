@@ -35,11 +35,6 @@ const getAllRoles = async (req, res) => {
     console.log(userAgent);
     const result = detector.detect(userAgent);
     console.log("result parse: ", result);
-    console.log(DeviceHelper.isSmartphone(result));
-    console.log(DeviceHelper.isMobile(result));
-    console.log(DeviceHelper.isDesktop(result));
-    console.log(DeviceHelper.isAndroid(result));
-    console.log(DeviceHelper.isBrowser(result));
     const roles = await pool.query(`SELECT * FROM role`);
     res.status(200).send(roles.rows);
   } catch (error) {

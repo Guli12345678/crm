@@ -1,15 +1,15 @@
 const {
-  addbranch,
-  getAllBranchs,
+  addpayment,
+  getAllPayments,
   updateById,
   removeById
-} = require("../controllers/branch.controller");
+} = require("../controllers/payment.controller");
 
 const router = require("express").Router();
 
-router.post("/", addbranch);
+router.post("/", addpayment);
 router.post("/:id", updateById);
-router.get("/", getAllBranchs);
+router.get("/", getAllPayments);
 router.delete("/:id", removeById);
 
 module.exports = router;

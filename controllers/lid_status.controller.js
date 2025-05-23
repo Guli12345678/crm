@@ -35,11 +35,6 @@ const getAllLidStatuss = async (req, res) => {
     console.log(userAgent);
     const result = detector.detect(userAgent);
     console.log("result parse: ", result);
-    console.log(DeviceHelper.isSmartphone(result));
-    console.log(DeviceHelper.isMobile(result));
-    console.log(DeviceHelper.isDesktop(result));
-    console.log(DeviceHelper.isAndroid(result));
-    console.log(DeviceHelper.isBrowser(result));
     const lidStatuss = await pool.query(`SELECT * FROM lid_status`);
     res.status(200).send(lidStatuss.rows);
   } catch (error) {
