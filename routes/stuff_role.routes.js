@@ -1,14 +1,14 @@
 const {
-  addgroup_stuff,
-  getAllgroup_stuffs,
+  addstuff_role,
+  getAllstuff_roles,
   updateById,
   removeById,
-} = require("../controllers/group_stuff.controller");
+} = require("../controllers/stuff_role.controller");
 
 const router = require("express").Router();
 
-router.post("/", addgroup_stuff);
-router.get("/", getAllgroup_stuffs);
+router.post("/", addstuff_role);
+router.get("/", getAllstuff_roles);
 router.patch("/", updateById);
 router.delete("/:id", removeById);
 

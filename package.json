@@ -15,8 +15,11 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "node-device-detector": "^2.2.2",
+    "nodemailer": "^7.0.3",
     "nodemon": "^3.1.10",
+    "otp-generator": "^4.0.1",
     "pg": "^8.16.0",
-    "pool": "^0.4.1"
+    "pool": "^0.4.1",
+    "uuid": "^11.1.0"
   }
 }
