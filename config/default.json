@@ -13,6 +13,5 @@
   "smtp_host": "smtp.gmail.com",
   "smtp_port": "587",
   "smtp_user": "gulsanammamadieva083@gmail.com",
-  "smtp_recipients": "evaevasmq@gmail.com",
   "api_url": "http://localhost:3333"
 }

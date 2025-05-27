@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
 const config = require("config");
-const recipient = config.get("smtp_recipients");
 class MailService {
   constructor() {
     this.transporter = nodemailer.createTransport({
@@ -17,13 +16,13 @@ class MailService {
   async sendMail(recipients, otp) {
     await this.transporter.sendMail({
       from: config.get("smtp_user"),
-      to: recipient,
+      to: recipients,
       subject: "Kod",
       html: `
-        <div>
-          <h2>Siz uchun kod</h2>
-          <h5>${otp}</h5>
-        </div>`,
+      <div>
+        <h2>Siz uchun kod</h2>
+        <h5>${otp}</h5>
+      </div>`,
     });
   }
 }

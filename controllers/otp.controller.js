@@ -9,7 +9,11 @@ const mailService = require("../services/mail.service");
 
 const newOtp = async (req, res) => {
   try {
-    const { email,recipient, phone_number } = req.body;
+    const { email, recipient, phone_number } = req.body;
+
+    if (!recipient) {
+      return res.status(400).send({ error: "Recipient is required" });
+    }
 
     const otp = otpGenerator.generate(4, {
       digits: true,
@@ -17,6 +21,7 @@ const newOtp = async (req, res) => {
       lowerCaseAlphabets: false,
       specialChars: false,
     });
+
     const now = new Date();
     const expirationTime = addMinutesTodate(now, 5);
 
@@ -27,15 +32,15 @@ const newOtp = async (req, res) => {
     `,
       [uuid.v4(), otp, expirationTime]
     );
-    //SMS, bot, email
 
     const details = {
       time: now,
-      phone_number: phone_number,
+      phone_number,
       sender: email,
-      recipient: recipient, 
+      recipient,
       otp_id: newOtpDb.rows[0].id,
     };
+
     await mailService.sendMail(recipient, otp);
     const encodedData = await encode(JSON.stringify(details));
 
@@ -47,6 +52,7 @@ const newOtp = async (req, res) => {
     sendErrorResponse(error, res);
   }
 };
+
 const verifyOtp = async (req, res) => {
   try {
     const { verification_key, otp, phone_number } = req.body;
